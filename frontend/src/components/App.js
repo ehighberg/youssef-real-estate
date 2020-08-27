@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { render } from 'react-dom'
+import { BrowserRouter as Router } from 'react-router-dom'
 import axios from 'axios'
 
 function App () {
@@ -38,4 +39,4 @@ function App () {
 export default App
 
 const container = document.getElementById('app')
-render(<App />, container)
+render(<Router><App /></Router>, container)
