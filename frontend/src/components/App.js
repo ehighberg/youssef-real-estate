@@ -9,12 +9,10 @@ function App () {
 
     useEffect(() => {
         fetchListings()
-    })
+    }, [])
 
     const fetchListings = async () => {
         const res = await axios.get('api/listing')
-        console.log(res)
-        setData([{price: '$35,000', id: 1}])
         if (!res.data) {
             console.log(res)
         } else {
