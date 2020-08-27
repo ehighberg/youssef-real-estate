@@ -4,6 +4,7 @@ import { Route, Switch, BrowserRouter as Router } from 'react-router-dom'
 import axios from 'axios'
 
 import Nav from './Nav.jsx'
+import Landing from './Landing.jsx'
 
 function App() {
     const [data, setData] = useState([])
@@ -26,6 +27,9 @@ function App() {
     return (
         <Fragment>
         <Nav />
+        <Switch>
+            <Route exact path='/'><Landing /></Route>
+        </Switch>
         <ul>
             {data.map(listing => {
                 return (
