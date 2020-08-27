@@ -8,6 +8,7 @@ import NagiPic2 from '../assets/david1.png'
 
 export default function BioCard(props) {
     const davidInfo = {
+        name: 'David Youssef',
         pic1: DavidPic1,
         pic2: DavidPic2,
         bioString: "Lorem Ipsum something something blah blah blah",
@@ -15,6 +16,7 @@ export default function BioCard(props) {
     }
 
     const nagiInfo = {
+        name: 'Nagi Youssef',
         pic1: NagiPic1,
         pic2: NagiPic2,
         bioString: "Lorem Ipsum something something blah blah blah",
@@ -33,6 +35,7 @@ export default function BioCard(props) {
 
     return (
         <div>
+            <p>{cardInfo.name}</p>
             <img src={`/static/frontend/${cardInfo.pic1}`} />
             <img src={`/static/frontend/${cardInfo.pic2}`} />
             <p>{cardInfo.bioString}</p>
