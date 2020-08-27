@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'product_display.apps.Product_displayConfig'
+    'realestate.apps.RealestateConfig'
 ]
 
 MIDDLEWARE = [
