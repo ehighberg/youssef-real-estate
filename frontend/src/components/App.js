@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, Fragment } from 'react'
 import { render } from 'react-dom'
-import { BrowserRouter as Router } from 'react-router-dom'
+import { Route, Switch, BrowserRouter as Router } from 'react-router-dom'
 import axios from 'axios'
 
-function App () {
+import Nav from './Nav.jsx'
+
+function App() {
     const [data, setData] = useState([])
     const [loaded, setLoaded] = useState(false)
     const [placeholder, setPlaceholder] = useState('Loading')
@@ -22,6 +24,8 @@ function App () {
     }
 
     return (
+        <Fragment>
+        <Nav />
         <ul>
             {data.map(listing => {
                 return (
@@ -32,6 +36,7 @@ function App () {
             })}
             <li>HAM</li>
         </ul>
+        </Fragment>
     )
 }
 
