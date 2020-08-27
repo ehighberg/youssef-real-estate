@@ -7,7 +7,8 @@ export default function Landing() {
     return (
         <main>
             <div>
-                <BioCard />
+                <BioCard name='david'/>
+                <BioCard name='nagi'/>
             </div>
         </main>
     )

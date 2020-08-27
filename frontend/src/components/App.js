@@ -38,7 +38,6 @@ function App() {
                     </li>
                 )
             })}
-            <li>HAM</li>
         </ul>
         </Fragment>
     )
