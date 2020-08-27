@@ -31,6 +31,7 @@ export default function Listings() {
             <div>
             <p>{data[0].price}</p>
             {data.map(listing => {
+                console.log(listing.image)
                 return (
                     <div key={listing.id}>
                         <img src={`${listing.image}`} />
