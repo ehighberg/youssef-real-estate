@@ -7,6 +7,7 @@ class Listing(models.Model):
     sq_ft = models.CharField(max_length=20)
     address = models.CharField(max_length=100)
     city_state = models.CharField(max_length=100)
+    photo_credit = models.CharField(max_length=200, default='Weichert, Realtors')
 
 
 class Image(models.Model):
