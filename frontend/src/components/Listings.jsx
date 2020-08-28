@@ -28,11 +28,8 @@ export default function Listings() {
     const fetchImages = async () => {
         const res = await axios.get('api/image/')
         if (!res.data) {
-            console.log('error')
-            console.error(res.error)
+            console.error({error: res.error})
         } else {
-            console.log('success')
-            console.log(res.data)
             setImages(res.data)
         }
     }
@@ -41,20 +38,21 @@ export default function Listings() {
     if (!listings[0] || !images[0]) {
         return <p>{placeholder}</p>
     } else {
-        console.log(listings)
         return (
             <div>
-            <p>{listings[0].price}</p>
-            {listings.map(listing => {
-                return (
-                    <div key={listing.id}>
-                        <img src={'data:image/png;base64, ' + images.filter(image => {
-                            return image.listing_id === listing.id
-                        })[0].base64_image} />
-                        <p>{listing.price}</p>
-                    </div>
-                )
-            })}
+                {listings.map(listing => {
+                    return (
+                        <div key={listing.id}>
+                            <img src={'data:image/png;base64, ' + images.filter(image => {
+                                return image.listing_id === listing.id
+                            })[0].base64_image} />
+                            <p>{listing.price}</p>
+                            <div>
+                                <p>{listing.beds} Beds</p>
+                            </div>
+                        </div>
+                    )
+                })}
             </div>
         )
     }
