@@ -15,6 +15,7 @@ function App() {
             <Route exact path='/'><Landing /></Route>
             <Route exact path='/recent'><Listings /></Route>
         </Switch>
+        <footer>&#169;{` ${new Date().getFullYear()} Weichert, Realtors`}</footer>
         </React.Fragment>
     )
 }
