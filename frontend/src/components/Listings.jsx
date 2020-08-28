@@ -3,11 +3,13 @@ import axios from 'axios'
 
 
 export default function Listings() {
-    const [data, setData] = useState([])
+    const [listings, setListings] = useState([])
     const [placeholder, setPlaceholder] = useState('Loading...')
+    const [images, setImages] = useState([])
 
     useEffect(() => {
         fetchListings()
+        fetchImages()
     }, [])
 
     const fetchListings = async () => {
@@ -19,22 +21,36 @@ export default function Listings() {
         } else {
             console.log('success')
             console.log(res.data)
-            setData(res.data)
+            setListings(res.data)
         }
     }
 
-    if (!data[0]) {
+    const fetchImages = async () => {
+        const res = await axios.get('api/image/')
+        if (!res.data) {
+            console.log('error')
+            console.error(res.error)
+        } else {
+            console.log('success')
+            console.log(res.data)
+            setImages(res.data)
+        }
+    }
+
+
+    if (!listings[0] || !images[0]) {
         return <p>{placeholder}</p>
     } else {
-        console.log(data)
+        console.log(listings)
         return (
             <div>
-            <p>{data[0].price}</p>
-            {data.map(listing => {
-                console.log(listing.image)
+            <p>{listings[0].price}</p>
+            {listings.map(listing => {
                 return (
                     <div key={listing.id}>
-                        <img src={`${listing.image}`} />
+                        <img src={'data:image/png;base64, ' + images.filter(image => {
+                            return image.listing_id === listing.id
+                        })[0].base64_image} />
                         <p>{listing.price}</p>
                     </div>
                 )

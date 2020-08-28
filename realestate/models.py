@@ -7,5 +7,9 @@ class Listing(models.Model):
     sq_ft = models.CharField(max_length=20)
     address = models.CharField(max_length=100)
     city_state = models.CharField(max_length=100)
-    image = models.ImageField(upload_to='static')
+
+
+class Image(models.Model):
+    base64_image = models.ImageField(upload_to='media/')
+    listing_id = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
