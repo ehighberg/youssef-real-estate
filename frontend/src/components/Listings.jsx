@@ -1,6 +1,8 @@
 import React, { useState, useEffect} from 'react'
 import axios from 'axios'
 
+import houseIcon from '../assets/brlogo_sm.png'
+
 
 export default function Listings() {
     const [listings, setListings] = useState([])
@@ -48,7 +50,15 @@ export default function Listings() {
                             })[0].base64_image} />
                             <p>{listing.price}</p>
                             <div>
-                                <p>{listing.beds} Beds</p>
+                                <p><span>{listing.beds}</span> Beds</p>
+                                <p><span>{listing.baths}</span> Baths</p>
+                                <p><span>{listing.sq_ft}</span> Sq.Ft.</p>
+                            </div>
+                            <p>{listing.address}</p>
+                            <p>{listing.city_state}</p>
+                            <div>
+                                <img src={`/static/frontend/${houseIcon}`} />
+                                <p>Courtesy of <span>{listing.photo_credit}</span></p>
                             </div>
                         </div>
                     )
@@ -56,5 +66,4 @@ export default function Listings() {
             </div>
         )
     }
-
 }
