@@ -17,12 +17,9 @@ export default function Listings() {
     const fetchListings = async () => {
         const res = await axios.get('api/listing/')
         if (!res.data) {
-            console.log('error')
-            console.error(res.error)
+            console.error({error: res.error})
             setPlaceholder('Something went wrong, try again in a few minutes.')
         } else {
-            console.log('success')
-            console.log(res.data)
             setListings(res.data)
         }
     }
