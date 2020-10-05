@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'realestate.apps.RealestateConfig',
     'rest_framework',
     'frontend',
+    'django_s3_storage',
 ]
 
 MIDDLEWARE = [
@@ -134,3 +135,12 @@ REST_FRAMEWORK = {
         'rest_framework.renderers.JSONRenderer',
     )
 }
+
+
+# S3 Configuration
+DEFAULT_FILE_STORAGE = 'django_s3_storage.storage.S3Storage'
+
+AWS_REGION = env('AWS_REGION')
+AWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY')
+AWS_S3_ADDRESSING_STYLE = env('AWS_S3_ADDRESSING_STYLE')

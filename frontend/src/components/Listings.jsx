@@ -7,11 +7,9 @@ import houseIcon from '../assets/brlogo_sm.png'
 export default function Listings() {
     const [listings, setListings] = useState([])
     const [placeholder, setPlaceholder] = useState('Loading...')
-    const [images, setImages] = useState([])
 
     useEffect(() => {
         fetchListings()
-        fetchImages()
     }, [])
 
     const fetchListings = async () => {
@@ -20,21 +18,13 @@ export default function Listings() {
             console.error({error: res.error})
             setPlaceholder('Something went wrong, try again in a few minutes.')
         } else {
+            console.log(res.data[0])
             setListings(res.data)
         }
     }
 
-    const fetchImages = async () => {
-        const res = await axios.get('api/image/')
-        if (!res.data) {
-            console.error({error: res.error})
-        } else {
-            setImages(res.data)
-        }
-    }
 
-
-    if (!listings[0] || !images[0]) {
+    if (!listings[0]) {
         return <p>{placeholder}</p>
     } else {
         return (
@@ -42,9 +32,7 @@ export default function Listings() {
                 {listings.map(listing => {
                     return (
                         <div key={listing.id}>
-                            <img src={'data:image/png;base64, ' + images.filter(image => {
-                                return image.listing_id === listing.id
-                            })[0].base64_image} />
+                            <img src={`${listing.photo}`} />
                             <p>{listing.price}</p>
                             <div>
                                 <p><span>{listing.beds}</span> Beds</p>

@@ -1,6 +1,5 @@
 from django.contrib import admin
 
-from .models import Listing, Image
+from .models import Listing
 
 admin.site.register(Listing)
-admin.site.register(Image)
