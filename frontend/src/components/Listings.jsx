@@ -24,6 +24,18 @@ export default function Listings() {
     }
 
 
+    const format_with_commas = number => {
+        number = number.toString()
+        let output = []
+        while (number.length > 3) {
+            output.push(number.slice(-3))
+            number = number.slice(0, -3)
+        }
+        output.push(number)
+        return `${output.reverse().join(',')}`
+    }
+
+
     if (!listings[0]) {
         return <p>{placeholder}</p>
     } else {
@@ -33,11 +45,11 @@ export default function Listings() {
                     return (
                         <div key={listing.id}>
                             <img src={`${listing.photo}`} />
-                            <p>{listing.price}</p>
+                            <p>{`$${format_with_commas(listing.price)}`}</p>
                             <div>
                                 <p><span>{listing.beds}</span> Beds</p>
                                 <p><span>{listing.baths}</span> Baths</p>
-                                <p><span>{listing.sq_ft}</span> Sq.Ft.</p>
+                                <p><span>{format_with_commas(listing.sq_ft)}</span> Sq.Ft.</p>
                             </div>
                             <p>{listing.address}</p>
                             <p>{listing.city_state}</p>
