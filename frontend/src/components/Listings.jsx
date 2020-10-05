@@ -18,7 +18,6 @@ export default function Listings() {
             console.error({error: res.error})
             setPlaceholder('Something went wrong, try again in a few minutes.')
         } else {
-            console.log(res.data[0])
             setListings(res.data)
         }
     }
